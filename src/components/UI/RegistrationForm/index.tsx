@@ -22,6 +22,7 @@ import {
   StatIcon,
   StatContent,
   CubeGraphic,
+  OrbitalRings,
   BackedBySection,
   RightPanel,
   FormHeader,
@@ -55,8 +56,6 @@ import {
   ReviewSection,
   ReviewGroup,
   Wrapper,
-  GlobeDecoration,
-  MountainsDecoration,
 } from './styles';
 
 const steps = ['Basic Info', 'Details', 'Hackathon', 'Review'];
@@ -437,7 +436,9 @@ const RegistrationForm = () => {
           <CubeGraphic>
             <img src="/images/reg_cube_hero.png" alt="Nortable 3D Cube" />
           </CubeGraphic>
-
+          
+          <OrbitalRings />
+          
           <BackedBySection>
             <div className="label">BACKED BY</div>
             <div className="logos">
@@ -449,8 +450,6 @@ const RegistrationForm = () => {
         </LeftPanel>
 
         <RightPanel>
-          <GlobeDecoration />
-          <MountainsDecoration />
           <FormHeader>
             <FormTitleSection>
               <h1>Register for <span className="highlight">Nortable 2026</span></h1>
@@ -846,26 +845,34 @@ const RegistrationForm = () => {
             <WhyJoinSection>
               <h3>Why Join Nortable 2026?</h3>
               <BenefitsGrid>
-                <BenefitCard>
-                  <div className="icon"><StarIcon /></div>
-                  <div className="title">Learn from</div>
-                  <div className="subtitle">Industry Experts</div>
-                </BenefitCard>
-                <BenefitCard>
-                  <div className="icon"><CodeIcon /></div>
-                  <div className="title">Build Real</div>
-                  <div className="subtitle">World Solutions</div>
-                </BenefitCard>
-                <BenefitCard>
-                  <div className="icon"><TrophyIcon /></div>
-                  <div className="title">Win Amazing</div>
-                  <div className="subtitle">Prizes</div>
-                </BenefitCard>
-                <BenefitCard>
-                  <div className="icon"><UsersIcon /></div>
-                  <div className="title">Network with</div>
-                  <div className="subtitle">Top Innovators</div>
-                </BenefitCard>
+            <BenefitCard>
+              <div className="icon"><StarIcon /></div>
+              <div className="text">
+                <div className="title">Learn from</div>
+                <div className="subtitle">Industry Experts</div>
+              </div>
+            </BenefitCard>
+            <BenefitCard>
+              <div className="icon"><CodeIcon /></div>
+              <div className="text">
+                <div className="title">Build Real</div>
+                <div className="subtitle">World Solutions</div>
+              </div>
+            </BenefitCard>
+            <BenefitCard>
+              <div className="icon"><TrophyIcon /></div>
+              <div className="text">
+                <div className="title">Win Amazing</div>
+                <div className="subtitle">Prizes</div>
+              </div>
+            </BenefitCard>
+            <BenefitCard>
+              <div className="icon"><UsersIcon /></div>
+              <div className="text">
+                <div className="title">Network with</div>
+                <div className="subtitle">Top Innovators</div>
+              </div>
+            </BenefitCard>
               </BenefitsGrid>
             </WhyJoinSection>
           )}

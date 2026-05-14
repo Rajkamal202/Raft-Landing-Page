@@ -93,12 +93,8 @@ export const MainContainer = styled.div`
 `;
 
 export const LeftPanel = styled.aside`
-  background: linear-gradient(180deg, #0a0a0a 0%, #0d1a0d 100%);
-  background-image: url('/images/reg_server_corridor.png');
-  background-size: cover;
-  background-position: center;
-  background-blend-mode: overlay;
-  border-right: 1px solid rgba(34, 197, 94, 0.15);
+  background: #050505;
+  border-right: 1px solid rgba(34, 197, 94, 0.1);
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -109,7 +105,10 @@ export const LeftPanel = styled.aside`
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.8) 100%);
+    background-image: url('/images/reg_corner_glow.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.6;
     z-index: 0;
   }
 
@@ -283,18 +282,12 @@ export const CubeGraphic = styled.div`
 export const BackedBySection = styled.div`
   margin-top: auto;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  background-image: url('/images/reg_circular_platform.png');
-  background-size: 200px;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  padding-bottom: 6rem;
 
   .label {
-    font-size: 0.6875rem;
-    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.625rem;
+    color: rgba(255, 255, 255, 0.35);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     margin-bottom: 0.75rem;
   }
 
@@ -304,9 +297,9 @@ export const BackedBySection = styled.div`
     gap: 1.5rem;
 
     span {
-      font-size: 0.9375rem;
+      font-size: 0.875rem;
       font-weight: 600;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.6);
       display: flex;
       align-items: center;
       gap: 0.375rem;
@@ -321,12 +314,8 @@ export const BackedBySection = styled.div`
 `;
 
 export const RightPanel = styled.main`
-  background: #0f0f0f;
-  background-image: url('/images/reg_grid_floor.png');
-  background-size: cover;
-  background-position: bottom center;
-  background-repeat: no-repeat;
-  padding: 2rem;
+  background: #0a0a0a;
+  padding: 2rem 3rem;
   padding-top: 5rem;
   display: flex;
   flex-direction: column;
@@ -336,8 +325,14 @@ export const RightPanel = styled.main`
   &::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(15, 15, 15, 0.95) 0%, rgba(15, 15, 15, 0.85) 70%, rgba(15, 15, 15, 0.9) 100%);
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 350px;
+    background-image: url('/images/reg_radial_glow.png');
+    background-size: cover;
+    opacity: 0.5;
+    pointer-events: none;
     z-index: 0;
   }
 
@@ -452,25 +447,10 @@ export const StepLine = styled.div<{ $completed: boolean }>`
 
 export const FormCard = styled.div`
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 1rem;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
-  position: relative;
-  overflow: hidden;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 200px;
-    height: 200px;
-    background-image: url('/images/reg_green_glow.png');
-    background-size: cover;
-    opacity: 0.15;
-    pointer-events: none;
-  }
 `;
 
 export const InputRow = styled.div`
@@ -570,35 +550,16 @@ export const ErrorText = styled.span`
 `;
 
 export const WhyJoinSection = styled.div`
-  background: rgba(34, 197, 94, 0.05);
-  background-image: url('/images/reg_patterns.png');
-  background-size: cover;
-  background-position: center;
-  background-blend-mode: overlay;
-  border: 1px solid rgba(34, 197, 94, 0.15);
+  background: rgba(34, 197, 94, 0.03);
+  border: 1px solid rgba(34, 197, 94, 0.12);
   border-radius: 0.75rem;
   padding: 1.25rem;
   margin-bottom: 1.5rem;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.75);
-    z-index: 0;
-  }
-
-  > * {
-    position: relative;
-    z-index: 1;
-  }
 
   h3 {
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     font-weight: 600;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 1rem;
   }
 `;
@@ -620,26 +581,31 @@ export const BenefitsGrid = styled.div`
 
 export const BenefitCard = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 0.5rem;
+  align-items: flex-start;
+  gap: 0.625rem;
 
   .icon {
-    width: 36px;
-    height: 36px;
-    background: rgba(34, 197, 94, 0.15);
-    border: 1px solid rgba(34, 197, 94, 0.25);
+    width: 32px;
+    height: 32px;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.2);
     border-radius: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 
     svg {
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
       color: #22c55e;
     }
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
   }
 
   .title {
@@ -650,7 +616,7 @@ export const BenefitCard = styled.div`
 
   .subtitle {
     font-size: 0.6875rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.45);
   }
 `;
 
@@ -726,30 +692,11 @@ export const FooterInfo = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  padding: 1.5rem;
+  padding: 1.25rem;
   background: rgba(255, 255, 255, 0.02);
-  background-image: url('/images/reg_waves.png');
-  background-size: cover;
-  background-position: center;
-  background-blend-mode: overlay;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 1rem;
   margin-top: auto;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 0;
-  }
-
-  > * {
-    position: relative;
-    z-index: 1;
-  }
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -993,6 +940,17 @@ export const MountainsDecoration = styled.div`
   opacity: 0.3;
   pointer-events: none;
   z-index: 0;
+`;
+
+export const OrbitalRings = styled.div`
+  width: 100%;
+  height: 100px;
+  background-image: url('/images/reg_orbital_rings.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: -2rem;
+  margin-bottom: 1rem;
 `;
 
 // Legacy exports for compatibility
