@@ -94,12 +94,29 @@ export const MainContainer = styled.div`
 
 export const LeftPanel = styled.aside`
   background: linear-gradient(180deg, #0a0a0a 0%, #0d1a0d 100%);
+  background-image: url('/images/reg_server_corridor.png');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
   border-right: 1px solid rgba(34, 197, 94, 0.15);
   padding: 2rem;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.8) 100%);
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 
   @media (max-width: 1024px) {
     display: none;
@@ -251,35 +268,15 @@ export const CubeGraphic = styled.div`
   justify-content: center;
   position: relative;
   margin: 1rem 0;
+  min-height: 200px;
 
-  .cube {
-    width: 160px;
-    height: 160px;
-    background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(34, 197, 94, 0.05) 100%);
-    border: 1px solid rgba(34, 197, 94, 0.3);
-    border-radius: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 40px rgba(34, 197, 94, 0.3));
     animation: ${float} 4s ease-in-out infinite;
-    position: relative;
-    transform: perspective(500px) rotateX(10deg) rotateY(-10deg);
-
-    &::before {
-      content: 'N';
-      font-size: 4rem;
-      font-weight: 800;
-      color: #22c55e;
-      text-shadow: 0 0 40px rgba(34, 197, 94, 0.5);
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      inset: -20px;
-      border: 1px solid rgba(34, 197, 94, 0.1);
-      border-radius: 1.5rem;
-    }
   }
 `;
 
@@ -362,28 +359,15 @@ export const DecorativeGraphic = styled.div`
   position: absolute;
   top: -1rem;
   right: 0;
-  width: 140px;
-  height: 100px;
-  opacity: 0.8;
+  width: 160px;
+  height: 120px;
+  opacity: 0.9;
 
-  .hexagon {
+  img {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, transparent 70%);
-    border: 1px solid rgba(34, 197, 94, 0.2);
-    border-radius: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-
-    &::before {
-      content: 'N';
-      font-size: 2rem;
-      font-weight: 800;
-      color: #22c55e;
-      opacity: 0.6;
-    }
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(34, 197, 94, 0.2));
   }
 
   @media (max-width: 600px) {

@@ -433,7 +433,7 @@ const RegistrationForm = () => {
           </StatsGrid>
 
           <CubeGraphic>
-            <div className="cube" />
+            <img src="/images/reg_cube_hero.png" alt="Nortable 3D Cube" />
           </CubeGraphic>
 
           <BackedBySection>
@@ -453,7 +453,7 @@ const RegistrationForm = () => {
               <p>Join the most anticipated hackathon of the year</p>
             </FormTitleSection>
             <DecorativeGraphic>
-              <div className="hexagon" />
+              <img src="/images/reg_cube_isometric.png" alt="Decorative Cube" />
             </DecorativeGraphic>
           </FormHeader>
 
