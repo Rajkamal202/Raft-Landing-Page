@@ -4,53 +4,53 @@ import ic_circle_stack from '../../../../public/svgs/ic_circle_stack.svg';
 import ic_arrows_left_right from '../../../../public/svgs/ic_arrows_right_left.svg';
 
 // For desktop
-export const desktopHeaderPhrase = ['Your Financial Freedom,', 'Your Way'];
+export const desktopHeaderPhrase = ['$500K+ in Prizes.', 'Your Time to Win.'];
 export const desktopParagraphPhrase = [
-  'We believe that managing your finances should be effortless and cost-effective.',
-  "That's why we offer you the freedom you deserve.",
+  'We believe every builder deserves recognition. From grand prizes to track',
+  'awards, there are countless ways to win big at NEXUS.',
 ];
 export const desktopBriefNotePhrase = [
-  'Smart investments,',
-  'secure payments, and',
-  'expert guidance, all in',
-  'one place.',
+  'World-class mentors,',
+  'industry connections,',
+  'and career-changing',
+  'opportunities await.',
 ];
 
 // For mobile
-export const mobileHeaderPhrase = ['Your Financial', 'Freedom, Your Way'];
+export const mobileHeaderPhrase = ['$500K+ in Prizes.', 'Your Time to Win.'];
 export const mobileParagraphPhrase = [
-  'We believe that managing your finances should be',
-  "effortless and cost-effective. That's why we offer",
-  ' you the freedom you deserve.',
+  'We believe every builder deserves recognition.',
+  'From grand prizes to track awards, there are',
+  'countless ways to win big at NEXUS.',
 ];
 
 export const mobileBriefNotePhrase = [
-  'Smart',
-  ' investments,',
-  'secure',
-  ' payments,',
-  'and expert',
-  'guidance, all',
-  'in one place.',
+  'World-class',
+  ' mentors,',
+  'industry',
+  ' connections,',
+  'and career-',
+  'changing',
+  'opportunities.',
 ];
 
 export const edges = [
   {
-    point: 'No minimum balance fees',
+    point: '$100K Grand Prize',
     details:
-      'Say goodbye to minimum balance fees. Your account, your balance—no hidden charges',
+      'The ultimate recognition. Win the grand prize and launch your project with serious momentum.',
     icon: ic_banknotes,
   },
   {
-    point: 'No monthly fees',
+    point: '$50K Track Prizes',
     details:
-      'Bank with us without worrying about monthly fees. Keep more of your money where it belongs—in your account',
+      'Each track awards $50K to its winner. Dominate your domain and take home the gold.',
     icon: ic_circle_stack,
   },
   {
-    point: 'No bank transfer fees',
+    point: 'Sponsor Bounties',
     details:
-      'Seamlessly transfer funds without the extra cost. Send and receive money with zero bank transfer fees.',
+      'Solve sponsor challenges for additional prizes. Stack bounties and maximize your winnings.',
     icon: ic_arrows_left_right,
   },
 ];

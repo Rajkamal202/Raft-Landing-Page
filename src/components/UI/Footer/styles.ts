@@ -180,3 +180,10 @@ export const CopyRight = styled.div`
     gap: 0.25rem;
   }
 `;
+
+export const LogoText = styled.span`
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.02em;
+`;

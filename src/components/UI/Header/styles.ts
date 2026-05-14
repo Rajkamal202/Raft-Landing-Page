@@ -125,3 +125,10 @@ export const CallToActions = styled.div`
     }
   }
 `;
+
+export const LogoText = styled.span`
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.02em;
+`;
