@@ -2,18 +2,6 @@
 
 import { styled, keyframes } from 'styled-components';
 
-const gradientMove = keyframes`
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-`;
-
 const glow = keyframes`
   0%, 100% {
     filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.3));
@@ -59,128 +47,38 @@ export const CardContainer = styled.div`
 export const TicketCard = styled.div`
   position: relative;
   display: flex;
-  background: linear-gradient(
-    135deg,
-    #e07830 0%,
-    #f59e0b 25%,
-    #f97316 50%,
-    #ea580c 75%,
-    #dc6a1a 100%
-  );
-  background-size: 200% 200%;
-  animation: ${gradientMove} 8s ease infinite;
-  border-radius: 12px;
-  overflow: hidden;
-  min-width: 580px;
-  max-width: 620px;
-  min-height: 260px;
+  background-image: url('/images/ticket_background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: visible;
+  width: 580px;
+  height: 340px;
   box-shadow: 
-    0 25px 50px -12px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-  animation: ${glow} 3s ease-in-out infinite, ${gradientMove} 8s ease infinite;
+    0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: ${glow} 3s ease-in-out infinite;
   transform-style: preserve-3d;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.15;
-    pointer-events: none;
-  }
 
   @media (max-width: 640px) {
-    min-width: 100%;
-    max-width: 100%;
-    flex-direction: column;
-    min-height: auto;
+    width: 100%;
+    max-width: 360px;
+    height: 220px;
   }
 `;
 
-export const TicketNotch = styled.div`
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  background: var(--Background, #0a0a0a);
-  border-radius: 50%;
-  z-index: 10;
-
-  &.top-left {
-    top: -12px;
-    left: -12px;
-  }
-
-  &.top-right {
-    top: -12px;
-    right: -12px;
-  }
-
-  &.bottom-left {
-    bottom: -12px;
-    left: -12px;
-  }
-
-  &.bottom-right {
-    bottom: -12px;
-    right: -12px;
-  }
-`;
-
-export const TicketLeft = styled.div`
+export const TicketContent = styled.div`
   flex: 1;
-  padding: 2rem;
+  padding: 2.5rem;
+  padding-right: 100px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
   z-index: 1;
 
-  .participant-info {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 0.5rem;
-    flex-wrap: wrap;
-
-    .org {
-      font-size: 0.875rem;
-      color: rgba(0, 0, 0, 0.7);
-      font-weight: 500;
-    }
-
-    .role-badge {
-      font-size: 0.625rem;
-      font-weight: 700;
-      background: rgba(0, 0, 0, 0.2);
-      color: rgba(0, 0, 0, 0.9);
-      padding: 0.25rem 0.75rem;
-      border-radius: 100px;
-      letter-spacing: 0.1em;
-    }
-  }
-
   @media (max-width: 640px) {
     padding: 1.5rem;
-  }
-`;
-
-export const TicketRight = styled.div`
-  width: 60px;
-  background: rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  border-left: 2px dashed rgba(0, 0, 0, 0.15);
-
-  @media (max-width: 640px) {
-    width: 100%;
-    height: 50px;
-    border-left: none;
-    border-top: 2px dashed rgba(0, 0, 0, 0.15);
+    padding-right: 70px;
   }
 `;
 
@@ -240,28 +138,6 @@ export const EventDetails = styled.div`
 
   @media (max-width: 640px) {
     flex-wrap: wrap;
-  }
-`;
-
-export const AdmitBadge = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: rgba(0, 0, 0, 0.25);
-  letter-spacing: 0.3em;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-
-  span {
-    display: block;
-  }
-
-  @media (max-width: 640px) {
-    writing-mode: horizontal-tb;
-    flex-direction: row;
-    gap: 0.125rem;
   }
 `;
 

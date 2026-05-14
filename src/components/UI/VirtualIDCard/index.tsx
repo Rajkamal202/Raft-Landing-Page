@@ -7,14 +7,11 @@ import {
   IDCardWrapper,
   CardContainer,
   TicketCard,
-  TicketLeft,
-  TicketRight,
-  TicketNotch,
+  TicketContent,
   EventBranding,
   EventTitle,
   ParticipantName,
   EventDetails,
-  AdmitBadge,
   RegistrationCode,
   QRSection,
   CardActions,
@@ -193,47 +190,22 @@ const VirtualIDCard = ({ participantData, registrationType, teamName }: VirtualI
                 damping: 15
               }}
             >
-              <TicketNotch className="top-left" />
-              <TicketNotch className="top-right" />
-              <TicketNotch className="bottom-left" />
-              <TicketNotch className="bottom-right" />
-              
-              <TicketLeft>
+              <TicketContent>
                 <EventBranding>
                   <span>NORTABLE PRESENTS</span>
                   <EventTitle>NORTABLE 2026</EventTitle>
-                  <span className="tagline">CODE. COLLABORATE. CREATE IMPACT.</span>
                 </EventBranding>
 
                 <ParticipantName>
                   {participantData.fullName.toUpperCase()}
                 </ParticipantName>
 
-                <div className="participant-info">
-                  <span className="org">{participantData.organization}</span>
-                  <span className="role-badge">{getRole()}</span>
-                </div>
-
                 <EventDetails>
                   <span>SAN FRANCISCO + VIRTUAL</span>
                   <span className="dot">-</span>
                   <span>JUNE 14-16, 2026</span>
                 </EventDetails>
-              </TicketLeft>
-
-              <TicketRight>
-                <AdmitBadge>
-                  <span>A</span>
-                  <span>D</span>
-                  <span>M</span>
-                  <span>I</span>
-                  <span>T</span>
-                  <span> </span>
-                  <span>O</span>
-                  <span>N</span>
-                  <span>E</span>
-                </AdmitBadge>
-              </TicketRight>
+              </TicketContent>
             </TicketCard>
           )}
         </AnimatePresence>
