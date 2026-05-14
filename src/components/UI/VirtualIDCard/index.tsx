@@ -61,6 +61,15 @@ const VirtualIDCard = ({ participantData, registrationType, teamName }: VirtualI
     return 'TEAM MEMBER';
   };
 
+  // Calculate dynamic font size based on name length
+  const getNameFontSize = () => {
+    const nameLength = participantData.fullName.length;
+    if (nameLength > 25) return 'clamp(0.9rem, 2.5vw, 1.25rem)';
+    if (nameLength > 20) return 'clamp(1rem, 3vw, 1.5rem)';
+    if (nameLength > 15) return 'clamp(1.1rem, 3.5vw, 1.75rem)';
+    return 'clamp(1.25rem, 4vw, 2rem)';
+  };
+
   // Dynamic ticket background based on registration type
   const ticketBackground = registrationType === 'solo' 
     ? '/images/ticket_green.png' 
@@ -213,7 +222,7 @@ const VirtualIDCard = ({ participantData, registrationType, teamName }: VirtualI
                   <EventTitle>NORTABLE 2026</EventTitle>
                 </EventBranding>
 
-                <ParticipantName>
+                <ParticipantName style={{ fontSize: getNameFontSize() }}>
                   {participantData.fullName.toUpperCase()}
                 </ParticipantName>
 
