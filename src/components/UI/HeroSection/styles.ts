@@ -1,6 +1,6 @@
 'use client';
 import { styled } from 'styled-components';
-import hero_background from '../../../../public/images/hero_background.png';
+import hero_background from '../../../../public/images/grid_background.png';
 
 export const Wrapper = styled.section`
   margin-top: 6.25rem;
@@ -15,9 +15,7 @@ export const Inner = styled.div`
   margin: 0 auto;
   text-align: center;
   background-position: top center;
-  background-size: cover;
-  padding: 2rem;
-  border-radius: 1rem;
+  background-size: contain;
 `;
 
 export const Pill = styled.div`
