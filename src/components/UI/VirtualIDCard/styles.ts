@@ -83,8 +83,9 @@ export const TicketCard = styled.div<{ $ticketType?: 'solo' | 'team' }>`
 
 export const TicketContent = styled.div`
   flex: 1;
-  padding: 1.75rem 2rem;
-  padding-right: 110px;
+  padding: 2.5rem 2.5rem;
+  padding-left: 3rem;
+  padding-right: 120px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -95,8 +96,9 @@ export const TicketContent = styled.div`
   box-sizing: border-box;
 
   @media (max-width: 640px) {
-    padding: 1.25rem 1.5rem;
-    padding-right: 70px;
+    padding: 1.5rem;
+    padding-left: 1.75rem;
+    padding-right: 75px;
   }
 `;
 
@@ -130,30 +132,24 @@ export const EventTitle = styled.h1`
 `;
 
 export const ParticipantName = styled.h2`
-  font-size: clamp(1.125rem, 3.5vw, 1.875rem);
+  font-size: clamp(1rem, 3vw, 1.625rem);
   font-weight: 800;
   color: rgba(0, 0, 0, 0.95);
-  letter-spacing: -0.01em;
-  line-height: 0.95;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
   margin: 0;
-  padding: 0.5rem 0;
+  padding: 0;
   word-break: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
   max-width: 100%;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
   flex: 1;
   display: flex;
   align-items: center;
 
   @media (max-width: 640px) {
-    font-size: clamp(0.875rem, 4vw, 1.125rem);
-    -webkit-line-clamp: 2;
-    line-height: 1;
+    font-size: clamp(0.75rem, 3.5vw, 1rem);
+    line-height: 1.15;
   }
 `;
 
