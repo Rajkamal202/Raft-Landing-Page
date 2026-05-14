@@ -55,6 +55,8 @@ import {
   ReviewSection,
   ReviewGroup,
   Wrapper,
+  GlobeDecoration,
+  MountainsDecoration,
 } from './styles';
 
 const steps = ['Basic Info', 'Details', 'Hackathon', 'Review'];
@@ -447,6 +449,8 @@ const RegistrationForm = () => {
         </LeftPanel>
 
         <RightPanel>
+          <GlobeDecoration />
+          <MountainsDecoration />
           <FormHeader>
             <FormTitleSection>
               <h1>Register for <span className="highlight">Nortable 2026</span></h1>

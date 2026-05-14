@@ -284,6 +284,11 @@ export const BackedBySection = styled.div`
   margin-top: auto;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background-image: url('/images/reg_circular_platform.png');
+  background-size: 200px;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  padding-bottom: 6rem;
 
   .label {
     font-size: 0.6875rem;
@@ -317,11 +322,29 @@ export const BackedBySection = styled.div`
 
 export const RightPanel = styled.main`
   background: #0f0f0f;
+  background-image: url('/images/reg_grid_floor.png');
+  background-size: cover;
+  background-position: bottom center;
+  background-repeat: no-repeat;
   padding: 2rem;
   padding-top: 5rem;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 15, 15, 0.95) 0%, rgba(15, 15, 15, 0.85) 70%, rgba(15, 15, 15, 0.9) 100%);
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 
   @media (max-width: 768px) {
     padding: 1.5rem;
@@ -433,6 +456,21 @@ export const FormCard = styled.div`
   border-radius: 1rem;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background-image: url('/images/reg_green_glow.png');
+    background-size: cover;
+    opacity: 0.15;
+    pointer-events: none;
+  }
 `;
 
 export const InputRow = styled.div`
@@ -533,10 +571,29 @@ export const ErrorText = styled.span`
 
 export const WhyJoinSection = styled.div`
   background: rgba(34, 197, 94, 0.05);
+  background-image: url('/images/reg_patterns.png');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
   border: 1px solid rgba(34, 197, 94, 0.15);
   border-radius: 0.75rem;
   padding: 1.25rem;
   margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 
   h3 {
     font-size: 0.9375rem;
@@ -671,9 +728,28 @@ export const FooterInfo = styled.div`
   gap: 1.5rem;
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.02);
+  background-image: url('/images/reg_waves.png');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 1rem;
   margin-top: auto;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -888,6 +964,35 @@ export const ReviewGroup = styled.div`
       margin-bottom: 0.25rem;
     }
   }
+`;
+
+export const GlobeDecoration = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  background-image: url('/images/reg_globe.png');
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+`;
+
+export const MountainsDecoration = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background-image: url('/images/reg_mountains.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
 `;
 
 // Legacy exports for compatibility
