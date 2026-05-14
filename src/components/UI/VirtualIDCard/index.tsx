@@ -61,6 +61,16 @@ const VirtualIDCard = ({ participantData, registrationType, teamName }: VirtualI
     return 'TEAM MEMBER';
   };
 
+  // Dynamic ticket background based on registration type
+  const ticketBackground = registrationType === 'solo' 
+    ? '/images/ticket_green.png' 
+    : '/images/ticket_blue.png';
+
+  // Dynamic glow color based on registration type
+  const glowColor = registrationType === 'solo' 
+    ? 'rgba(72, 214, 76, 0.4)' 
+    : 'rgba(59, 130, 246, 0.4)';
+
   const qrData = JSON.stringify({
     id: registrationId,
     name: participantData.fullName,
@@ -70,7 +80,6 @@ const VirtualIDCard = ({ participantData, registrationType, teamName }: VirtualI
   });
 
   const handleDownload = () => {
-    // In a real app, this would generate a PNG/PDF
     alert('Download functionality would generate a high-res image of your ID card.');
   };
 
@@ -86,6 +95,11 @@ const VirtualIDCard = ({ participantData, registrationType, teamName }: VirtualI
       alert('Badge info copied to clipboard!');
     }
   };
+
+  // Confetti colors based on registration type
+  const confettiColors = registrationType === 'solo'
+    ? ['#48d64c', '#2b892e', '#86efac', '#22c55e', '#15803d']
+    : ['#3b82f6', '#1d4ed8', '#60a5fa', '#2563eb', '#1e40af'];
 
   return (
     <IDCardWrapper>
@@ -117,9 +131,7 @@ const VirtualIDCard = ({ participantData, registrationType, teamName }: VirtualI
                   ease: 'easeOut',
                 }}
                 style={{
-                  background: ['#48d64c', '#2b892e', '#f97316', '#3b82f6', '#a855f7'][
-                    Math.floor(Math.random() * 5)
-                  ],
+                  background: confettiColors[Math.floor(Math.random() * confettiColors.length)],
                 }}
               />
             ))}
@@ -139,8 +151,8 @@ const VirtualIDCard = ({ participantData, registrationType, teamName }: VirtualI
           transition={{ delay: 0.5, type: 'spring', stiffness: 200 }}
         >
           <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-            <circle cx="32" cy="32" r="32" fill="rgba(43, 137, 46, 0.2)" />
-            <circle cx="32" cy="32" r="24" fill="#2b892e" />
+            <circle cx="32" cy="32" r="32" fill={registrationType === 'solo' ? 'rgba(43, 137, 46, 0.2)' : 'rgba(59, 130, 246, 0.2)'} />
+            <circle cx="32" cy="32" r="24" fill={registrationType === 'solo' ? '#2b892e' : '#3b82f6'} />
             <path
               d="M22 32L28 38L42 24"
               stroke="white"
@@ -173,6 +185,7 @@ const VirtualIDCard = ({ participantData, registrationType, teamName }: VirtualI
           {showCard && (
             <TicketCard
               as={motion.div}
+              $ticketType={registrationType}
               initial={{ 
                 opacity: 0, 
                 rotateY: -90,
@@ -188,6 +201,10 @@ const VirtualIDCard = ({ participantData, registrationType, teamName }: VirtualI
                 type: 'spring',
                 stiffness: 100,
                 damping: 15
+              }}
+              style={{
+                backgroundImage: `url(${ticketBackground})`,
+                filter: `drop-shadow(0 0 30px ${glowColor})`,
               }}
             >
               <TicketContent>
@@ -235,7 +252,10 @@ const VirtualIDCard = ({ participantData, registrationType, teamName }: VirtualI
         </QRSection>
 
         <CardActions>
-          <DownloadButton onClick={handleDownload}>
+          <DownloadButton 
+            onClick={handleDownload}
+            $ticketType={registrationType}
+          >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
               <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               <polyline points="7,10 12,15 17,10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
