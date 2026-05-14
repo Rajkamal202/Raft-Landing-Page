@@ -1,13 +1,13 @@
 // For desktop
-export const phrases = ['Building the future of', 'banking.'];
+export const phrases = ['Build the Future.', 'Ship It Live.'];
 export const paragraphPhrases = [
-  "Experience the future of banking with RAFT. We're here to",
-  'empower your financial journey.',
+  '48 hours. One mission. Join 5,000+ builders at the world\'s most',
+  'ambitious hackathon. Build, ship, and compete for $500K in prizes.',
 ];
 
 // For mobile
-export const mobilePhrases = ['Building the future', 'of banking'];
+export const mobilePhrases = ['Build the Future.', 'Ship It Live.'];
 export const mobileParagraphPhrases = [
-  "Experience the future of banking with RAFT. We're",
-  'here to empower your financial journey.',
+  '48 hours. One mission. Join 5,000+ builders',
+  'at the world\'s most ambitious hackathon.',
 ];

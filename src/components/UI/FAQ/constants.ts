@@ -19,23 +19,23 @@ export const animate = {
 
 export const faqData: FAQItem[] = [
   {
-    question: 'How do I create an account with RAFT?',
+    question: 'Who can participate in NEXUS?',
     answer:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+      'Anyone 18+ can participate! Whether you\'re a student, professional developer, designer, or entrepreneur, NEXUS welcomes builders of all backgrounds and skill levels. Teams can have 1-4 members.',
   },
   {
-    question: 'How does RAFT ensure the security of my financial data?',
+    question: 'Do I need a team to participate?',
     answer:
-      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
+      'No! While you can register with a pre-formed team, we also have team formation events before and during the hackathon. Many winning projects have been built by people who met at NEXUS.',
   },
   {
-    question: 'What types of transactions can I perform with RAFT?',
+    question: 'What should I bring to the in-person event?',
     answer:
-      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
+      'Bring your laptop, chargers, and any hardware you want to hack with. We provide meals, snacks, drinks, WiFi, and sleeping areas. Don\'t forget a sleeping bag if you plan to stay overnight!',
   },
   {
-    question: 'What benefits does RAFT offer for wealth management?',
+    question: 'How are projects judged?',
     answer:
-      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
+      'Projects are evaluated on innovation, technical complexity, design, and potential impact. Each track has domain-specific criteria, and sponsor bounties have their own requirements.',
   },
 ];

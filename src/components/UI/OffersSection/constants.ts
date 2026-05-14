@@ -4,44 +4,44 @@ import wealth_management from '../../../../public/images/wealth_management.png';
 import financial_planning from '../../../../public/images/financial_planning.png';
 // For desktop
 export const desktopHeaderPhrases = [
-  'Elevate Your Financial',
-  'Journey with RAFT',
+  'Everything You Need to',
+  'Build & Ship',
 ];
 export const desktopParagraphPhrase = [
-  'RAFT offers a world of financial possibilities. From investments to payments,',
-  "we've got you covered. Join us and unlock your potential today.",
+  'NEXUS provides world-class resources for builders. From workshops to mentors,',
+  "we've got everything you need to go from idea to launch in 48 hours.",
 ];
 
 // For mobile
 export const mobileParagraphPhrase = [
-  'RAFT offers a world of financial possibilities. From',
-  "investments to payments, we've got you covered.",
-  'Join us and unlock your potential today.',
+  'NEXUS provides world-class resources for builders.',
+  "From workshops to mentors, we've got everything",
+  'you need to go from idea to launch.',
 ];
 
 export const offers = [
   {
     illustration: seamless_payments,
-    title: 'Seamless Payments',
+    title: 'Technical Workshops',
     details:
-      'Enjoy secure, seamless transactions that make managing your money a breeze.',
+      'Learn from industry experts with hands-on workshops covering AI, Web3, cloud infrastructure, and more.',
   },
   {
     illustration: smart_investing,
-    title: 'Smart Investing',
+    title: 'Mentorship Sessions',
     details:
-      'Grow your wealth confidently with our personalized investment solutions, tailored to your financial goals.',
+      'Book 1-on-1 sessions with engineers from Google, Meta, OpenAI, and top startups throughout the event.',
   },
   {
     illustration: wealth_management,
-    title: 'Wealth Management',
+    title: 'Demo Day Pitch',
     details:
-      'Make informed decisions for your financial future with our wealth management expertise.',
+      'Present your project to a panel of judges including VCs, founders, and tech leaders on the main stage.',
   },
   {
     illustration: financial_planning,
-    title: 'Financial Planning',
+    title: 'Networking Events',
     details:
-      'Achieve your financial dreams with our comprehensive financial planning services, guiding you toward a secure future.',
+      'Connect with fellow builders, sponsors, and mentors at curated networking sessions and after-parties.',
   },
 ];

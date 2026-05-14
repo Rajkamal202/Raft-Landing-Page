@@ -8,16 +8,16 @@ import ic_copyright from '../../../../public/svgs/ic_copyright.svg';
 
 const linksArr = [
   {
-    title: 'About us',
-    links: ['Our Company', 'Careers', 'Press kits'],
+    title: 'Event',
+    links: ['Schedule', 'Tracks', 'Prizes'],
   },
   {
-    title: 'Legal',
-    links: ['Terms of use', 'Privacy policy', 'About us'],
+    title: 'Resources',
+    links: ['Code of Conduct', 'Privacy Policy', 'Terms'],
   },
   {
-    title: 'About us',
-    links: ['Contact us', 'FAQ'],
+    title: 'Connect',
+    links: ['Discord', 'Twitter', 'Contact'],
   },
 ];
 
@@ -53,7 +53,7 @@ const Footer = () => {
                 <Image src={qr_code} alt="qr_code" />
               </QRImageCtn>
               <TextCtn>
-                <p>Scan to download App on the Playstore and Appstore.</p>
+                <p>Scan to join our Discord community and connect with fellow hackers.</p>
                 <IconCtn>
                   <Image src={ic_google_playstore} alt="playstore icon" />
                   <Image src={ic_baseline_apple} alt="apple icon" />
@@ -80,7 +80,7 @@ const Footer = () => {
             </Translator>
             <CopyRight>
               <Image src={ic_copyright} alt="copyright svg" />
-              Raft Corp, LLC.
+              NEXUS Hackathon 2026
             </CopyRight>
           </FooterBottom>
         </FooterMainContent>

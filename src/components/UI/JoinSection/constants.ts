@@ -12,34 +12,34 @@ export type Props = {
 export const testimonials = [
   {
     testimony:
-      "RAFT has transformed my approach to finance. Their smart investing options have helped me grow my wealth, and their user-friendly platform makes managing my money a breeze. I've never felt more confident about my financial future.",
-    person: 'Robert Fox',
+      "NEXUS was a game-changer for my startup. In 48 hours, we built our MVP, won the AI track, and met the investors who led our seed round. The energy and support from mentors was incredible.",
+    person: 'Alex Chen',
     avatar: robert_fox,
   },
   {
     testimony:
-      "I can't express how grateful I am to RAFT. Their wealth management services have been a game-changer for my family's financial security. The expert guidance and personalized strategies have given us peace of mind, knowing that our future is in capable hands.",
-    person: 'Cameron Williamson',
+      "I came to NEXUS as a solo developer and left with a co-founder, a working product, and a job offer. The team formation event connected me with builders who shared my vision. Best weekend ever.",
+    person: 'Sarah Mitchell',
     avatar: cameron_williamson,
   },
   {
     testimony:
-      "RAFT's financial planning services have been a lifeline for me. I always struggled with managing my money, but their team crafted a tailored plan that addressed my goals and concerns. It's been a game-changer in achieving my financial dreams",
-    person: 'Esther Howard',
+      "The workshops and mentorship at NEXUS accelerated my learning by months. I went from knowing nothing about Web3 to building a DeFi protocol that won a sponsor bounty. Mind-blowing experience.",
+    person: 'Marcus Johnson',
     avatar: esther_howard,
   },
   {
     testimony:
-      "I can't express how grateful I am to RAFT. Their wealth management services have been a game-changer for my family's financial security. The expert guidance and personalized strategies have given us peace of mind, knowing that our future is in capable hands.",
-    person: 'Cameron Williamson',
+      "I came to NEXUS as a solo developer and left with a co-founder, a working product, and a job offer. The team formation event connected me with builders who shared my vision. Best weekend ever.",
+    person: 'Sarah Mitchell',
     avatar: cameron_williamson,
   },
   {
     testimony:
-      "RAFT has transformed my approach to finance. Their smart investing options have helped me grow my wealth, and their user-friendly platform makes managing my money a breeze. I've never felt more confident about my financial future.",
-    person: 'Robert Fox',
+      "NEXUS was a game-changer for my startup. In 48 hours, we built our MVP, won the AI track, and met the investors who led our seed round. The energy and support from mentors was incredible.",
+    person: 'Alex Chen',
     avatar: robert_fox,
   },
 ];
 
-export const desktopHeaderPhrase = ['Join over 3 million', 'members'];
+export const desktopHeaderPhrase = ['Join 5,000+ Builders', 'Worldwide'];

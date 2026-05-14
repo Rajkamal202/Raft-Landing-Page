@@ -3,39 +3,39 @@ import ic_identification from '../../../../public/svgs/ic_identification.svg';
 import ic_lock_closed from '../../../../public/svgs/ic_lock_closed.svg';
 
 // For desktop
-export const desktopHeaderPhrase = ["Introducing RAFT's Next-", 'Gen Cards'];
+export const desktopHeaderPhrase = ['Three Epic Tracks.', 'Infinite Possibilities.'];
 export const desktopParagraphPhrase = [
-  " Discover RAFT's latest innovation – our new cards. Elevate your banking",
-  'experience with cutting-edge features, security, and unprecedented',
-  'convenience.',
+  'Choose your path and build something extraordinary. Each track comes with',
+  'dedicated mentors, specialized workshops, and unique prizes tailored',
+  'to your domain.',
 ];
 
 // For mobile
-export const mobileHeaderPhrase = ["Introducing RAFT's", 'Next-Gen Cards'];
+export const mobileHeaderPhrase = ['Three Epic Tracks.', 'Infinite Possibilities.'];
 export const mobileParagraphPhrase = [
-  " Discover RAFT's latest innovation – our new cards.",
-  ' Elevate your banking experience with cutting-edge',
-  'features, security, and unprecedented',
-  'convenience.',
+  'Choose your path and build something',
+  'extraordinary. Each track comes with dedicated',
+  'mentors, specialized workshops, and unique',
+  'prizes.',
 ];
 
 export const edges = [
   {
-    point: 'Contactless Technology',
+    point: 'AI & Machine Learning',
     details:
-      'Our new cards come equipped with contactless technology, allowing you to make swift, secure payments with a simple tap.',
+      'Build the next generation of intelligent applications. From LLMs to computer vision, push the boundaries of what AI can do.',
     icon: ic_document_duplicate,
   },
   {
-    point: 'Personalization',
+    point: 'Web3 & DeFi',
     details:
-      'Customize your card to reflect your unique style. Choose from a range of designs that suit your personality.',
+      'Shape the decentralized future. Create innovative protocols, DApps, and financial primitives on the blockchain.',
     icon: ic_identification,
   },
   {
-    point: 'Enhanced Security',
+    point: 'Climate & Sustainability',
     details:
-      'Your peace of mind is our priority. Our cards feature advanced security measures to protect your transactions and data.',
+      'Code for the planet. Build solutions that tackle climate change, promote sustainability, and create a greener future.',
     icon: ic_lock_closed,
   },
 ];
