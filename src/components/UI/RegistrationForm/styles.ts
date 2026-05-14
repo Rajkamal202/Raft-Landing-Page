@@ -1,301 +1,454 @@
 'use client';
 
-import { styled } from 'styled-components';
+import { styled, keyframes } from 'styled-components';
 
-export const Wrapper = styled.section`
+const pulse = keyframes`
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+`;
+
+const float = keyframes`
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+`;
+
+export const PageWrapper = styled.div`
   min-height: 100vh;
-  padding: 2rem;
-  padding-top: 8rem;
+  background: #0a0a0a;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const TopHeader = styled.header`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem 2rem;
+  gap: 1rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100;
 
   @media (max-width: 768px) {
     padding: 1rem;
-    padding-top: 6rem;
   }
 `;
 
-export const Inner = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 2rem;
-  min-height: calc(100vh - 10rem);
+export const EarlyBirdButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  border-radius: 2rem;
+  color: #22c55e;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 
-  @media (max-width: 968px) {
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  &:hover {
+    background: rgba(34, 197, 94, 0.25);
+    border-color: #22c55e;
+  }
+`;
+
+export const LoginButton = styled.button`
+  padding: 0.625rem 1.5rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.375rem;
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+  }
+`;
+
+export const MainContainer = styled.div`
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  flex: 1;
+  min-height: 100vh;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: 380px 1fr;
+  }
+
+  @media (max-width: 1024px) {
     grid-template-columns: 1fr;
   }
 `;
 
-export const Sidebar = styled.aside`
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
+export const LeftPanel = styled.aside`
+  background: linear-gradient(180deg, #0a0a0a 0%, #0d1a0d 100%);
+  border-right: 1px solid rgba(34, 197, 94, 0.15);
   padding: 2rem;
-  height: fit-content;
-  position: sticky;
-  top: 8rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
 
-  @media (max-width: 968px) {
-    position: relative;
-    top: 0;
+  @media (max-width: 1024px) {
+    display: none;
   }
 `;
 
-export const SidebarTitle = styled.h2`
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 0.5rem;
-`;
-
-export const SidebarSubtitle = styled.p`
-  font-size: 0.875rem;
-  color: var(--link-color);
+export const LogoSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   margin-bottom: 2rem;
 `;
 
-export const HighlightCard = styled.div`
-  background: rgba(43, 137, 46, 0.1);
-  border: 1px solid rgba(43, 137, 46, 0.3);
-  border-radius: 0.75rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`;
-
-export const HighlightIcon = styled.div`
+export const LogoIcon = styled.div`
   width: 40px;
   height: 40px;
-  background: rgba(43, 137, 46, 0.2);
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: #000;
 `;
 
-export const HighlightText = styled.span`
-  font-size: 0.75rem;
-  color: var(--link-color);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-`;
-
-export const HighlightValue = styled.span`
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--emerald);
-`;
-
-export const SponsorLogos = styled.div`
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-
-  p {
-    font-size: 0.75rem;
-    color: var(--link-color);
-    margin-bottom: 0.5rem;
-  }
-
-  div {
-    font-size: 0.875rem;
-    color: var(--white);
-    opacity: 0.7;
-  }
-`;
-
-export const FormContainer = styled.div`
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1rem;
-  padding: 2rem;
-
-  .button-group {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .back-btn {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--white);
-    padding: 0.875rem 2rem;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-
-    &:hover {
-      border-color: var(--white);
-      background: rgba(255, 255, 255, 0.05);
-    }
-  }
-
-  .review-section {
-    h3 {
-      font-size: 1.25rem;
-      margin-bottom: 1.5rem;
-      color: var(--white);
-    }
-
-    .review-group {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 0.75rem;
-      padding: 1.25rem;
-      margin-bottom: 1rem;
-
-      h4 {
-        font-size: 0.875rem;
-        color: var(--emerald);
-        margin-bottom: 1rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-
-      p {
-        font-size: 0.9375rem;
-        color: var(--light-gray);
-        margin-bottom: 0.5rem;
-
-        strong {
-          color: var(--white);
-        }
-      }
-
-      ul {
-        margin-left: 1rem;
-        margin-top: 0.5rem;
-
-        li {
-          font-size: 0.875rem;
-          color: var(--light-gray);
-          margin-bottom: 0.25rem;
-        }
-      }
-    }
-  }
-
-  @media (max-width: 768px) {
-    padding: 1.5rem;
-  }
-`;
-
-export const FormTitle = styled.h1`
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 0.5rem;
-
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-  }
-`;
-
-export const FormSubtitle = styled.p`
-  font-size: 1rem;
-  color: var(--link-color);
-  margin-bottom: 1.5rem;
-`;
-
-export const TabContainer = styled.div`
-  display: flex;
-  gap: 0.5rem;
-  padding: 0.25rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 0.5rem;
-  margin-bottom: 2rem;
-  width: fit-content;
-`;
-
-export const Tab = styled.button<{ $active: boolean }>`
-  padding: 0.75rem 2rem;
-  border: none;
-  border-radius: 0.375rem;
-  font-size: 0.9375rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  background: ${({ $active }) => ($active ? 'var(--green)' : 'transparent')};
-  color: var(--white);
-
-  &:hover {
-    background: ${({ $active }) =>
-      $active ? 'var(--green)' : 'rgba(255, 255, 255, 0.1)'};
-  }
-`;
-
-export const StepIndicator = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-
-  @media (max-width: 600px) {
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-`;
-
-export const Step = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex: 1;
-
-  .step-circle {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--white);
-    flex-shrink: 0;
+export const LogoText = styled.div`
+  h1 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.05em;
   }
 
   span {
-    font-size: 0.875rem;
-    color: var(--link-color);
-    transition: color 0.3s ease;
+    font-size: 0.6875rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+`;
 
-    &.active {
-      color: var(--white);
-    }
+export const TaglinePill = styled.div`
+  display: inline-flex;
+  padding: 0.5rem 1rem;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 2rem;
+  color: #22c55e;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+  width: fit-content;
+`;
+
+export const HeroHeadline = styled.h2`
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+
+  .highlight {
+    color: #22c55e;
   }
 
-  @media (max-width: 600px) {
-    span {
-      display: none;
+  @media (max-width: 1200px) {
+    font-size: 2rem;
+  }
+`;
+
+export const HeroSubtext = styled.p`
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 320px;
+`;
+
+export const StatsGrid = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+`;
+
+export const StatCard = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(34, 197, 94, 0.05);
+  border: 1px solid rgba(34, 197, 94, 0.15);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: rgba(34, 197, 94, 0.3);
+  }
+`;
+
+export const StatIcon = styled.div`
+  width: 44px;
+  height: 44px;
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  border-radius: 0.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  svg {
+    width: 22px;
+    height: 22px;
+    color: #22c55e;
+  }
+`;
+
+export const StatContent = styled.div`
+  .label {
+    font-size: 0.6875rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+  }
+
+  .value {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #22c55e;
+    line-height: 1;
+  }
+
+  .subtext {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 0.125rem;
+  }
+`;
+
+export const CubeGraphic = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 1rem 0;
+
+  .cube {
+    width: 160px;
+    height: 160px;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(34, 197, 94, 0.05) 100%);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: ${float} 4s ease-in-out infinite;
+    position: relative;
+    transform: perspective(500px) rotateX(10deg) rotateY(-10deg);
+
+    &::before {
+      content: 'N';
+      font-size: 4rem;
+      font-weight: 800;
+      color: #22c55e;
+      text-shadow: 0 0 40px rgba(34, 197, 94, 0.5);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      border: 1px solid rgba(34, 197, 94, 0.1);
+      border-radius: 1.5rem;
     }
   }
 `;
 
-export const StepLine = styled.div<{ $active: boolean }>`
-  flex: 1;
-  height: 2px;
-  background: ${({ $active }) =>
-    $active ? 'var(--green)' : 'rgba(255, 255, 255, 0.1)'};
-  margin: 0 0.5rem;
-  transition: background 0.3s ease;
+export const BackedBySection = styled.div`
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  .label {
+    font-size: 0.6875rem;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+
+  .logos {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    span {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.7);
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+
+      svg {
+        width: 16px;
+        height: 16px;
+        opacity: 0.7;
+      }
+    }
+  }
+`;
+
+export const RightPanel = styled.main`
+  background: #0f0f0f;
+  padding: 2rem;
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    padding-top: 5rem;
+  }
+`;
+
+export const FormHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  position: relative;
+`;
+
+export const FormTitleSection = styled.div`
+  h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+
+    .highlight {
+      color: #22c55e;
+    }
+  }
+
+  p {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+`;
+
+export const DecorativeGraphic = styled.div`
+  position: absolute;
+  top: -1rem;
+  right: 0;
+  width: 140px;
+  height: 100px;
+  opacity: 0.8;
+
+  .hexagon {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, transparent 70%);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    &::before {
+      content: 'N';
+      font-size: 2rem;
+      font-weight: 800;
+      color: #22c55e;
+      opacity: 0.6;
+    }
+  }
 
   @media (max-width: 600px) {
     display: none;
   }
 `;
 
-export const FormSection = styled.div`
-  min-height: 300px;
+export const StepIndicator = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+`;
+
+export const StepItem = styled.div<{ $active: boolean; $completed: boolean }>`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  .number {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background: ${({ $active, $completed }) =>
+      $active || $completed ? '#22c55e' : 'rgba(255, 255, 255, 0.1)'};
+    color: ${({ $active, $completed }) =>
+      $active || $completed ? '#000' : 'rgba(255, 255, 255, 0.4)'};
+    border: 2px solid ${({ $active, $completed }) =>
+      $active || $completed ? '#22c55e' : 'rgba(255, 255, 255, 0.1)'};
+  }
+
+  .label {
+    font-size: 0.875rem;
+    color: ${({ $active }) => ($active ? '#fff' : 'rgba(255, 255, 255, 0.4)')};
+    font-weight: ${({ $active }) => ($active ? '500' : '400')};
+
+    @media (max-width: 600px) {
+      display: none;
+    }
+  }
+`;
+
+export const StepLine = styled.div<{ $completed: boolean }>`
+  flex: 1;
+  height: 1px;
+  background: ${({ $completed }) =>
+    $completed ? '#22c55e' : 'rgba(255, 255, 255, 0.1)'};
+  margin: 0 0.75rem;
+  max-width: 60px;
+  transition: all 0.3s ease;
+`;
+
+export const FormCard = styled.div`
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
 `;
 
 export const InputRow = styled.div`
@@ -309,119 +462,290 @@ export const InputRow = styled.div`
 `;
 
 export const InputGroup = styled.div`
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 export const Label = styled.label`
   display: block;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
-  color: var(--white);
+  color: rgba(255, 255, 255, 0.8);
   margin-bottom: 0.5rem;
+
+  .required {
+    color: #22c55e;
+  }
 `;
 
-export const Input = styled.input<{ $error?: boolean }>`
-  width: 100%;
-  padding: 0.875rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid
-    ${({ $error }) => ($error ? '#ef4444' : 'rgba(255, 255, 255, 0.1)')};
+export const InputWrapper = styled.div<{ $error?: boolean }>`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid ${({ $error }) => ($error ? '#ef4444' : 'rgba(255, 255, 255, 0.1)')};
   border-radius: 0.5rem;
-  font-size: 1rem;
-  color: var(--white);
   transition: all 0.3s ease;
 
-  &::placeholder {
-    color: var(--link-color);
-    opacity: 0.6;
+  &:focus-within {
+    border-color: ${({ $error }) => ($error ? '#ef4444' : '#22c55e')};
+    background: rgba(34, 197, 94, 0.05);
   }
 
-  &:focus {
+  svg {
+    width: 18px;
+    height: 18px;
+    color: rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+  }
+
+  input, select {
+    flex: 1;
+    background: transparent;
+    border: none;
+    font-size: 0.9375rem;
+    color: #fff;
     outline: none;
-    border-color: ${({ $error }) => ($error ? '#ef4444' : 'var(--emerald)')};
-    box-shadow: 0 0 0 3px
-      ${({ $error }) =>
-        $error ? 'rgba(239, 68, 68, 0.1)' : 'rgba(72, 214, 76, 0.1)'};
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  select {
+    cursor: pointer;
+
+    option {
+      background: #1a1a1a;
+      color: #fff;
+    }
+  }
+
+  .country-code {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-right: 0.75rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+
+    .flag {
+      font-size: 1rem;
+    }
   }
 `;
 
-export const TextArea = styled.textarea<{ $error?: boolean }>`
-  width: 100%;
-  padding: 0.875rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid
-    ${({ $error }) => ($error ? '#ef4444' : 'rgba(255, 255, 255, 0.1)')};
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  color: var(--white);
-  resize: vertical;
-  min-height: 100px;
-  font-family: inherit;
-  transition: all 0.3s ease;
-
-  &::placeholder {
-    color: var(--link-color);
-    opacity: 0.6;
-  }
-
-  &:focus {
-    outline: none;
-    border-color: ${({ $error }) => ($error ? '#ef4444' : 'var(--emerald)')};
-    box-shadow: 0 0 0 3px
-      ${({ $error }) =>
-        $error ? 'rgba(239, 68, 68, 0.1)' : 'rgba(72, 214, 76, 0.1)'};
-  }
-`;
-
-export const Select = styled.select<{ $error?: boolean }>`
-  width: 100%;
-  padding: 0.875rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid
-    ${({ $error }) => ($error ? '#ef4444' : 'rgba(255, 255, 255, 0.1)')};
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  color: var(--white);
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  option {
-    background: var(--Background);
-    color: var(--white);
-  }
-
-  &:focus {
-    outline: none;
-    border-color: ${({ $error }) => ($error ? '#ef4444' : 'var(--emerald)')};
-    box-shadow: 0 0 0 3px
-      ${({ $error }) =>
-        $error ? 'rgba(239, 68, 68, 0.1)' : 'rgba(72, 214, 76, 0.1)'};
-  }
-`;
-
-export const FileInput = styled.input`
-  display: none;
-`;
-
-export const FileLabel = styled.label`
+export const ErrorText = styled.span`
   display: block;
-  width: 100%;
-  padding: 0.875rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px dashed rgba(255, 255, 255, 0.2);
-  border-radius: 0.5rem;
-  font-size: 0.9375rem;
-  color: var(--link-color);
-  cursor: pointer;
+  font-size: 0.75rem;
+  color: #ef4444;
+  margin-top: 0.375rem;
+`;
+
+export const WhyJoinSection = styled.div`
+  background: rgba(34, 197, 94, 0.05);
+  border: 1px solid rgba(34, 197, 94, 0.15);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+
+  h3 {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+`;
+
+export const BenefitsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+`;
+
+export const BenefitCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  gap: 0.5rem;
+
+  .icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      color: #22c55e;
+    }
+  }
+
+  .title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .subtitle {
+    font-size: 0.6875rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+`;
+
+export const ContinueButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  border: none;
+  border-radius: 0.5rem;
+  color: #000;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+
+    svg {
+      transform: translateX(4px);
+    }
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+`;
+
+export const BackButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover {
-    border-color: var(--emerald);
-    background: rgba(72, 214, 76, 0.05);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.4);
   }
 `;
 
+export const ButtonGroup = styled.div`
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+
+  @media (max-width: 480px) {
+    flex-direction: column-reverse;
+  }
+`;
+
+export const FooterInfo = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+  margin-top: auto;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+`;
+
+export const FooterCard = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+
+  .icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      color: #22c55e;
+    }
+  }
+
+  .content {
+    h4 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+
+    p {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.4;
+    }
+
+    a {
+      color: #22c55e;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+`;
+
+// Team section styles
 export const TeamMemberCard = styled.div`
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -429,35 +753,26 @@ export const TeamMemberCard = styled.div`
   padding: 1rem;
   margin-bottom: 1rem;
   position: relative;
-
-  ${InputRow} {
-    grid-template-columns: repeat(3, 1fr);
-
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  ${InputGroup} {
-    margin-bottom: 0;
-  }
 `;
 
 export const AddMemberButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem;
   background: transparent;
-  border: 1px dashed rgba(72, 214, 76, 0.5);
-  color: var(--emerald);
-  padding: 0.75rem 1.5rem;
+  border: 1px dashed rgba(34, 197, 94, 0.4);
   border-radius: 0.5rem;
-  font-size: 0.9375rem;
+  color: #22c55e;
+  font-size: 0.875rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  width: 100%;
-  margin-bottom: 1rem;
 
   &:hover {
-    background: rgba(72, 214, 76, 0.1);
-    border-color: var(--emerald);
+    background: rgba(34, 197, 94, 0.1);
+    border-color: #22c55e;
   }
 `;
 
@@ -465,17 +780,62 @@ export const RemoveMemberButton = styled.button`
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
+  padding: 0.25rem 0.5rem;
   background: rgba(239, 68, 68, 0.1);
   border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 0.25rem;
   color: #ef4444;
-  padding: 0.375rem 0.75rem;
-  border-radius: 0.375rem;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover {
     background: rgba(239, 68, 68, 0.2);
+  }
+`;
+
+export const Select = styled.select<{ $error?: boolean }>`
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid ${({ $error }) => ($error ? '#ef4444' : 'rgba(255, 255, 255, 0.1)')};
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  option {
+    background: #1a1a1a;
+    color: #fff;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #22c55e;
+  }
+`;
+
+export const TextArea = styled.textarea<{ $error?: boolean }>`
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid ${({ $error }) => ($error ? '#ef4444' : 'rgba(255, 255, 255, 0.1)')};
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  color: #fff;
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #22c55e;
   }
 `;
 
@@ -489,66 +849,85 @@ export const CheckboxGroup = styled.div`
 export const Checkbox = styled.input`
   width: 18px;
   height: 18px;
-  accent-color: var(--green);
+  accent-color: #22c55e;
   cursor: pointer;
 `;
 
 export const CheckboxLabel = styled.label`
-  font-size: 0.9375rem;
-  color: var(--light-gray);
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
 `;
 
-export const SubmitButton = styled.button`
-  background: linear-gradient(135deg, var(--green) 0%, var(--emerald) 100%);
-  border: none;
-  color: var(--white);
-  padding: 1rem 2.5rem;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-left: auto;
-
-  &:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(43, 137, 46, 0.3);
-  }
-
-  &:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
+// Review section styles
+export const ReviewSection = styled.div`
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1.5rem;
   }
 `;
 
-export const ErrorText = styled.span`
-  display: block;
-  font-size: 0.75rem;
-  color: #ef4444;
-  margin-top: 0.375rem;
-`;
+export const ReviewGroup = styled.div`
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
 
-export const SuccessMessage = styled.div`
-  text-align: center;
-  padding: 4rem 2rem;
-  max-width: 500px;
-  margin: 0 auto;
-
-  h2 {
-    font-size: 2rem;
-    color: var(--white);
-    margin: 2rem 0 1rem;
+  h4 {
+    font-size: 0.8125rem;
+    color: #22c55e;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   p {
-    font-size: 1rem;
-    color: var(--light-gray);
-    line-height: 1.6;
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.7);
     margin-bottom: 0.5rem;
 
     strong {
-      color: var(--emerald);
+      color: #fff;
+    }
+  }
+
+  ul {
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+
+    li {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 0.25rem;
     }
   }
 `;
+
+// Legacy exports for compatibility
+export const Wrapper = styled.section`
+  min-height: 100vh;
+`;
+
+export const Inner = styled.div``;
+export const FormContainer = styled.div``;
+export const Sidebar = styled.aside``;
+export const FormSection = styled.div``;
+export const Tab = styled.button<{ $active: boolean }>``;
+export const TabContainer = styled.div``;
+export const Step = styled.div``;
+export const FormTitle = styled.h1``;
+export const FormSubtitle = styled.p``;
+export const SidebarTitle = styled.h2``;
+export const SidebarSubtitle = styled.p``;
+export const HighlightCard = styled.div``;
+export const HighlightIcon = styled.div``;
+export const HighlightText = styled.span``;
+export const HighlightValue = styled.span``;
+export const SponsorLogos = styled.div``;
+export const Input = styled.input<{ $error?: boolean }>``;
+export const FileInput = styled.input``;
+export const FileLabel = styled.label``;
+export const SubmitButton = styled.button``;
