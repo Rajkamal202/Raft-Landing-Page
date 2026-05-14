@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import raft_footer_logo from '../../../../public/svgs/raft_footer_logo.svg';
 import qr_code from '../../../../public/svgs/qr_code.svg';
 import ic_google_playstore from '../../../../public/svgs/ic_google_playstore.svg';
 import ic_baseline_apple from '../../../../public/svgs/ic_baseline_apple.svg';
@@ -37,6 +36,7 @@ import {
   FooterBottom,
   Translator,
   CopyRight,
+  LogoText,
 } from './styles';
 
 const Footer = () => {
@@ -44,7 +44,7 @@ const Footer = () => {
     <Wrapper>
       <Inner>
         <FooterLogo>
-          <Image src={raft_footer_logo} alt="raft_footer_logo" />
+          <LogoText>Nortable</LogoText>
         </FooterLogo>
         <FooterMainContent>
           <FooterMiddle>
@@ -80,7 +80,7 @@ const Footer = () => {
             </Translator>
             <CopyRight>
               <Image src={ic_copyright} alt="copyright svg" />
-              NEXUS Hackathon 2026
+              NEXUS Hackathon 2026 | Nortable
             </CopyRight>
           </FooterBottom>
         </FooterMainContent>

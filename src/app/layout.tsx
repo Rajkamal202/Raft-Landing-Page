@@ -3,8 +3,8 @@ import './globals.css';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'NorTable',
-  description: 'Building the future of banking',
+  title: 'Nortable',
+  description: 'Code. Collaborate. Create Impact.',
 };
 
 export default function RootLayout({
