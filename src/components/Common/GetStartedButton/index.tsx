@@ -7,7 +7,7 @@ const GetStartedButton = ({ padding }: { padding: string }) => {
       style={{
         padding: padding,
       }}
-      href="/"
+      href="/register"
     >
       Register Now
     </LinkTo>
