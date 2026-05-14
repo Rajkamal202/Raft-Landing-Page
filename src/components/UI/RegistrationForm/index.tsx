@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import PaymentStep from '../PaymentStep';
+import VirtualIDCard from '../VirtualIDCard';
 import {
   Wrapper,
   Inner,
@@ -38,7 +40,6 @@ import {
   SponsorLogos,
   InputRow,
   ErrorText,
-  SuccessMessage,
 } from './styles';
 
 const steps = ['Basic Info', 'Details', 'Hackathon', 'Review'];
@@ -74,7 +75,8 @@ const RegistrationForm = () => {
   const [registrationType, setRegistrationType] = useState<'solo' | 'team'>('solo');
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [showPayment, setShowPayment] = useState(false);
+  const [showIDCard, setShowIDCard] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   // Form data
@@ -202,9 +204,18 @@ const RegistrationForm = () => {
 
     setIsSubmitting(true);
     // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 1500));
     setIsSubmitting(false);
-    setIsSuccess(true);
+    setShowPayment(true);
+  };
+
+  const handlePaymentSuccess = () => {
+    setShowPayment(false);
+    setShowIDCard(true);
+  };
+
+  const handleBackToReview = () => {
+    setShowPayment(false);
   };
 
   const formVariants = {
@@ -213,47 +224,29 @@ const RegistrationForm = () => {
     exit: { opacity: 0, x: -20 },
   };
 
-  if (isSuccess) {
+  // Show Virtual ID Card after payment
+  if (showIDCard) {
     return (
       <Wrapper>
-        <Inner>
-          <SuccessMessage
-            as={motion.div}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
-            >
-              <svg
-                width="80"
-                height="80"
-                viewBox="0 0 80 80"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="40" cy="40" r="40" fill="#2b892e" fillOpacity="0.2" />
-                <circle cx="40" cy="40" r="30" fill="#2b892e" />
-                <path
-                  d="M28 40L36 48L52 32"
-                  stroke="white"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </motion.div>
-            <h2>Registration Successful!</h2>
-            <p>
-              Thank you for registering for Nortable 2026. We&apos;ve sent a confirmation
-              email to <strong>{formData.email}</strong>.
-            </p>
-            <p>Get ready to build the future with us on June 14-16, 2026!</p>
-          </SuccessMessage>
-        </Inner>
+        <VirtualIDCard
+          participantData={formData}
+          registrationType={registrationType}
+          teamName={formData.teamName}
+        />
+      </Wrapper>
+    );
+  }
+
+  // Show Payment Step
+  if (showPayment) {
+    return (
+      <Wrapper>
+        <PaymentStep
+          formData={formData}
+          registrationType={registrationType}
+          onPaymentSuccess={handlePaymentSuccess}
+          onBack={handleBackToReview}
+        />
       </Wrapper>
     );
   }
@@ -351,6 +344,28 @@ const RegistrationForm = () => {
             </HighlightIcon>
             <HighlightText>Event Date</HighlightText>
             <HighlightValue>June 14-16</HighlightValue>
+          </HighlightCard>
+
+          <HighlightCard>
+            <HighlightIcon>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 1V23"
+                  stroke="#48d64c"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M17 5H9.5C8.57174 5 7.6815 5.36875 7.02513 6.02513C6.36875 6.6815 6 7.57174 6 8.5C6 9.42826 6.36875 10.3185 7.02513 10.9749C7.6815 11.6313 8.57174 12 9.5 12H14.5C15.4283 12 16.3185 12.3687 16.9749 13.0251C17.6313 13.6815 18 14.5717 18 15.5C18 16.4283 17.6313 17.3185 16.9749 17.9749C16.3185 18.6313 15.4283 19 14.5 19H6"
+                  stroke="#48d64c"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </HighlightIcon>
+            <HighlightText>Registration Fee</HighlightText>
+            <HighlightValue>Rs. 100</HighlightValue>
           </HighlightCard>
 
           <SponsorLogos>
@@ -811,6 +826,13 @@ const RegistrationForm = () => {
                         </p>
                       )}
                     </div>
+
+                    <div className="review-group payment-note">
+                      <h4>Payment</h4>
+                      <p>
+                        Registration fee of <strong>Rs. 100</strong> will be collected in the next step.
+                      </p>
+                    </div>
                   </div>
                 </>
               )}
@@ -833,7 +855,7 @@ const RegistrationForm = () => {
                 onClick={handleSubmit}
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Submitting...' : 'Submit Registration'}
+                {isSubmitting ? 'Processing...' : 'Proceed to Payment'}
               </SubmitButton>
             )}
           </div>
